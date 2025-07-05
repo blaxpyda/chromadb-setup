@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: nomado_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - nomado_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  nomado_data:
+    driver: local
