@@ -1,0 +1,15 @@
+services:
+  chromadb:
+    image: chromadb/chroma:latest
+    container_name: chromadb
+    ports:
+      - "8000:8000"
+    environment:
+      - CHROMA_DB_IMPL=duckdb+parquet
+      - CHROMA_SERVER_AUTHN=none
+    volumes:
+      - chromadb_data:/chroma/chroma
+    restart: unless-stopped
+
+volumes:
+  chromadb_data:
